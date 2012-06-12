@@ -278,31 +278,9 @@ public class Frasufo extends JavaPlugin
 			System.out.println("recht");
 			player.sendMessage(server + "Du hast keine Rechte" + farbe + name);
 			return false;
-		}		
-  	}
-  		if (player.isOp()){
-			if (command.getName().equalsIgnoreCase("day"))
-		
-		{
-			world.setTime(0);
-			player.sendMessage("Es wurde Tag");
-			return true;
-		}
-		
-		else if (command.getName().equalsIgnoreCase("night")){
-			world.setTime(12531);
-			player.sendMessage("Es wurde Nacht");
-			return true;
-		}
-		else{
-			player.sendMessage("You hava no permissions!");
-			return false;
 		}
 			
-  		}
+  	}
   		return false;
-  		}
-	
-
-
+	}
 }
