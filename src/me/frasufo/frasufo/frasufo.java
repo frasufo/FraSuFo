@@ -191,7 +191,7 @@ public class Frasufo extends JavaPlugin
 	      if (welt.equals("NORMAL")) this.getServer().broadcastMessage(server + farbe + name + reset + " ist in der normalen Welt");
 		  if (welt.equals("NETHER")) this.getServer().broadcastMessage(server + farbe + name + reset + " ist im Nether");
 	  }
-	 
+	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent join){
 		Player player = join.getPlayer();
 		String name = player.getDisplayName();
@@ -243,7 +243,7 @@ public class Frasufo extends JavaPlugin
 		}
 	}
 	
-	public boolean onCommand(CommandSender sender, Command command, String label) {
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
   		Player player = (Player) sender;
   		String name = player.getName();
   		World world = (World) player.getWorld();
@@ -275,10 +275,34 @@ public class Frasufo extends JavaPlugin
 				return true;
 			}
 		else{
+			System.out.println("recht");
 			player.sendMessage(server + "Du hast keine Rechte" + farbe + name);
 			return false;
 		}		
   	}
-  		return false;	
+  		if (player.isOp()){
+			if (command.getName().equalsIgnoreCase("day"))
+		
+		{
+			world.setTime(0);
+			player.sendMessage("Es wurde Tag");
+			return true;
+		}
+		
+		else if (command.getName().equalsIgnoreCase("night")){
+			world.setTime(12531);
+			player.sendMessage("Es wurde Nacht");
+			return true;
+		}
+		else{
+			player.sendMessage("You hava no permissions!");
+			return false;
+		}
+			
   		}
+  		return false;
+  		}
+	
+
+
 }
